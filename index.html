@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Резюме</title>
+</head>
+<body>
+    <div class="flex">
+        <p class="resume"><a href="index.html"> Резюме </a></p>
+        <p class="calculator"><a href="indZadVar1.html"> Калькулятор </a></p>
+    </div>
+    <div class="avatarImage">
+        <img src="img/avatar.png" alt="Письма мастера дзен" class="avatar">
+    </div>
+    <div class="FIO"> <span id="FIO">Герасимов</span> Дмитрий Семёнович</div>
+    <p class="aboutMe">Обо мне:</p>
+    <div class="aboutMeBox">
+        <p class="aboutMeText">
+            Гений, миллиардер, филантроп и просто студент СТАНКИНа с кафедры КСУ
+        </p>
+    </div>
+    <p class="skills">Навыки</p>
+    <div class="skillsBox">
+        <p class="skillsText">
+            C++, C#, HTML, JavaScript, CSS
+        </p>
+    </div>
+    <label class="inputLabel">Введите фамилию</label>
+    <input type="text" class="inputSurname" placeholder="Герасимов">
+    <button type="button" class="inputButton">Ввод...</button>
+    <button type="button" class="randomColorButton">Push</button>
+
+    <script>
+        let input = document.querySelector('.inputSurname');
+        let inputButton = document.querySelector('.inputButton');
+        let randomColorButton = document.querySelector('.randomColorButton');
+
+        inputButton.addEventListener('click', function () {
+            if (input.value != "") {
+                surname = input.value;
+                var fioElement = document.getElementById("FIO");
+                fioElement.textContent = surname;
+                input.value = "";
+            }
+        });
+
+        randomColorButton.addEventListener('click', function () {
+            let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+            let rgbValue = "#" + randomColor;
+            document.body.style.backgroundColor = rgbValue;
+        });
+    </script>
+</body>
+
+<style>
+    body {
+        font-family: Tahoma, serif;
+        text-align: center;
+        background: #0094ff;
+    }
+
+    a {
+        color: #0c0834;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: #240935;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .resume {
+        margin: 10px 10px 10px 50px;
+        font-weight: bolder;
+        font-style: italic;
+        font-size: 46px;
+        
+        text-shadow: 3px 3px 5px #240935;
+        text-align: left;
+    }
+
+    .resume:hover {
+        margin: 10px 10px 10px 50px;
+        font-weight: bolder;
+        font-style: italic;
+        font-size: 46px;
+        text-shadow: 5px 5px 5px #0c0834;
+        text-align: left;
+    }
+
+    .calculator {
+        margin: 10px 50px 10px 50px;
+        font-weight: bolder;
+        font-style: italic;
+        font-size: 46px;
+        color: #0c0834;
+        text-shadow: 3px 3px 5px #240935;
+        text-align: right;
+    }
+
+    .calculator:hover {
+        margin: 10px 50px 10px 50px;
+        font-weight: bolder;
+        font-style: italic;
+        font-size: 46px;
+        text-shadow: 5px 5px 5px #0c0834;
+        text-align: left;
+    }
+        
+    .FIO {
+        margin: 10px 10px 10px 50px;
+        font-weight: bolder;
+        font-style: italic;
+        font-size: 46px;
+        color: #0c0834;
+        text-shadow: 3px 3px 5px #240935;
+    }
+
+
+    .avatarImage {
+        padding: 10px;
+        background: #0c0834;
+        box-shadow: 8px 8px 5px #0c0834;
+        display: inline-block;
+        margin: 0 auto;
+    }
+
+    .avatarImage:hover {
+        padding: 10px;
+        background: #240935;
+        display: inline-block;
+        margin: 0 auto;
+    }
+
+    .avatarImage img.avatar {
+        width: 300px;
+        height: 300px;
+    }
+
+    .aboutMe {
+        font-weight: bold;
+        font-size: 38px;
+        color: #0c0834;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    .aboutMeBox {
+        font-size: 26px;
+        width: 15em;
+        border: 1px solid #333;
+        box-shadow: 8px 8px 5px #0c0834;
+        padding: 8px 12px;
+        margin: 0 auto;
+    }
+
+    .aboutMeBox:hover {
+        width: 15em;
+        border: 1px solid #333;
+        box-shadow: 10px 10px 5px #240935;
+        padding: 8px 12px;
+        margin: 0 auto;
+    }
+
+    .aboutMeText {
+        text-align: left;
+    }
+
+    .skills {
+        font-weight: bold;
+        font-size: 38px;
+        color: #0c0834;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    .skillsBox {
+        font-size: 26px;
+        width: 15em;
+        border: 1px solid #333;
+        box-shadow: 8px 8px 5px #0c0834;
+        padding: 8px 12px;
+        margin: 0 auto;
+    }
+
+    .skillsBox:hover {
+        width: 15em;
+        border: 1px solid #333;
+        box-shadow: 10px 10px 5px #240935;
+        padding: 8px 12px;
+        margin: 0 auto;
+    }
+
+    .skillsText {
+        text-align: left;
+    }
+
+    .inputLabel {
+        font-weight: bold;
+        font-size: 24px;
+        color: #0c0834;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    .inputSurname {
+        margin: 50px auto;
+        font-size: 24px;
+    }
+
+    .inputButton {
+        font-size: 24px;
+    }
+
+    .randomColorButton {
+        background-color: #04AA6D;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+</style>
+</html >

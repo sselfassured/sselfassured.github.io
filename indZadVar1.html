@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Калькулятор</title>
+</head>
+<body>
+    <div class="flex">
+        <p class="resume"><a href="index.html"> Резюме </a></p>
+        <p class="refCalculator"><a href="indZadVar1.html"> Калькулятор </a></p>
+    </div>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="number1" readonly>
+            <span id="operator"></span>
+            <input type="text" id="number2" readonly>
+        </div>
+        <div class="buttons">
+            <button onclick="appendNumber(1)">1</button>
+            <button onclick="appendNumber(2)">2</button>
+            <button onclick="appendNumber(3)">3</button>
+            <button onclick="appendNumber(4)">4</button>
+            <button onclick="appendNumber(5)">5</button>
+            <button onclick="appendNumber(6)">6</button>
+            <button onclick="appendNumber(7)">7</button>
+            <button onclick="appendNumber(8)">8</button>
+            <button onclick="appendNumber(9)">9</button>
+            <button onclick="appendNumber(0)">0</button>
+        </div>
+        <div class="operators">
+            <button onclick="setOperator('+')">+</button>
+            <button onclick="setOperator('-')">-</button>
+            <button onclick="setOperator('*')">*</button>
+            <button onclick="setOperator('/')">/</button>
+        </div>
+        <div class="result">
+            <button onclick="calculate()">Посчитать</button>
+            <input type="text" id="result" readonly>
+        </div>
+    </div>
+</body>
+
+<style>
+    body {
+        font-family: Tahoma, serif;
+        text-align: center;
+        background: #0094ff;
+        justify-content: center;
+        align-items: center;
+    }
+
+    a {
+        color: #0c0834;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: #240935;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .resume {
+        margin: 10px 10px 10px 50px;
+        font-weight: bolder;
+        font-style: italic;
+        font-size: 46px;
+        text-shadow: 3px 3px 5px #240935;
+        text-align: left;
+    }
+
+    .resume:hover {
+        margin: 10px 10px 10px 50px;
+        font-weight: bolder;
+        font-style: italic;
+        font-size: 46px;
+        text-shadow: 5px 5px 5px #0c0834;
+        text-align: left;
+    }
+
+    .refCalculator {
+        margin: 10px 50px 10px 50px;
+        font-weight: bolder;
+        font-style: italic;
+        font-size: 46px;
+        color: #0c0834;
+        text-shadow: 3px 3px 5px #240935;
+        text-align: right;
+    }
+
+    .refCalculator:hover {
+        margin: 10px 50px 10px 50px;
+        font-weight: bolder;
+        font-style: italic;
+        font-size: 46px;
+        text-shadow: 5px 5px 5px #0c0834;
+        text-align: left;
+    }
+
+    .calculator {
+        width: 300px;
+        height: auto;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        margin: 0 auto;
+    }
+
+    .display {
+        margin-bottom: 10px;
+    }
+
+    .display input {
+        width: calc(100% - 12px);
+        padding: 5px;
+        font-size: 1.2em;
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+    }
+
+    .buttons button {
+        padding: 15px;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+
+    .operators, .result {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .result {
+        margin-top: 20px;
+    }
+
+    .result input {
+        width: 100%;
+        padding: 10px;
+        font-size: 1.2em;
+    }
+
+</style >
+
+<script>
+    let number1 = '';
+    let number2 = '';
+    let operator = '';
+
+    function appendNumber(number) {
+        if (!operator) {
+            number1 += number;
+            document.getElementById('number1').value = number1;
+        } else {
+            number2 += number;
+            document.getElementById('number2').value = number2;
+        }
+    }
+
+    function setOperator(op) {
+        if (number1) {
+            operator = op;
+            document.getElementById('operator').value = operator;
+            document.getElementById("operator").textContent = operator;
+        }
+    }
+
+    function calculate() {
+        let result;
+        const num1 = parseFloat(number1);
+        const num2 = parseFloat(number2);
+
+        switch (operator) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                result = num1 / num2;
+                break;
+            default:
+                return;
+        }
+
+        const resultField = document.getElementById('result');
+        if (result > 15) {
+            resultField.value = result + ' > 15';
+            resultField.style.backgroundColor = 'red';
+        } else {
+            resultField.value = result;
+            resultField.style.backgroundColor = 'white';
+        }
+
+        document.getElementById('number1').value = number1 = "";
+        document.getElementById('number2').value = number2 = "";
+        document.getElementById('operator').value = document.getElementById("operator").textContent = operator = "";
+    }
+</script>
+</html >
